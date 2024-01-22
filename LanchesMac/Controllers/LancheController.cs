@@ -2,6 +2,7 @@
 using LanchesMac.Models.Repositories;
 using LanchesMac.Models.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace LanchesMac.Controllers
 {
@@ -16,6 +17,7 @@ namespace LanchesMac.Controllers
 
         public IActionResult List()
         {
+            ViewBag.Titulo = "Todos os lanches";
             var lanches = _lancheRepository.Lanches;
             return View(lanches);
         }
