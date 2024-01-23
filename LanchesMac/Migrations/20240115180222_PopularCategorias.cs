@@ -16,7 +16,7 @@ namespace LanchesMac.Migrations
             migrationBuilder.Sql("INSERT INTO Categoria(CategoriaNome, Descricao) " +
                 "VALUES('Natural', 'Lanche feito com ingredientes naturais')");
 
-            
+
         }
 
         /// <inheritdoc />

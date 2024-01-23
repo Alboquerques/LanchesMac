@@ -1,9 +1,6 @@
-﻿using LanchesMac.Models;
-using LanchesMac.Models.Repositories;
-using LanchesMac.Models.Repositories.Interfaces;
+﻿using LanchesMac.Models.Repositories.Interfaces;
 using LanchesMac.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using System;
 
 namespace LanchesMac.Controllers
 {
