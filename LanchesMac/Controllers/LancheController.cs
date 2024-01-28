@@ -31,16 +31,12 @@ namespace LanchesMac.Controllers
             {
                 try
                 {
-                    switch (categoria)
+                    lanches = categoria switch
                     {
-                        case "normal":
-                            lanches = _lancheRepository.Lanches.Where(l => l.Categoria.CategoriaNome.Equals("Normal", StringComparison.OrdinalIgnoreCase));
-                            break;
-                        case "natural":
-                            lanches = _lancheRepository.Lanches.Where(l => l.Categoria.CategoriaNome.Equals("Natural", StringComparison.OrdinalIgnoreCase));
-                            break;
-                        default: throw new ArgumentOutOfRangeException(nameof(categoriaAtual), "Valor de categoria é inválido, digite uma categoria válida.");
-                    }
+                        "Normal" => _lancheRepository.Lanches.Where(l => l.Categoria.CategoriaNome.Equals("Normal")),
+                        "Natural" => _lancheRepository.Lanches.Where(l => l.Categoria.CategoriaNome.Equals("Natural")),
+                        _ => throw new ArgumentOutOfRangeException(nameof(categoriaAtual), "Valor de categoria é inválido, digite uma categoria válida."),
+                    };
                 }
                 catch (Exception ex)
                 {
