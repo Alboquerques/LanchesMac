@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Net.NetworkInformation;
 
 namespace LanchesMac.Models
 {
@@ -10,9 +9,9 @@ namespace LanchesMac.Models
         public int LancheId { get; set; }
         public int Quantidade { get; set; }
         [Column(TypeName = "decimal(18,2)")]
-        public decimal Preco{ get; set; }
-        
+        public decimal Preco { get; set; }
+
         public virtual Lanche Lanche { get; set; }
-        public virtual Pedido Pedido { get; set; }  
+        public virtual Pedido Pedido { get; set; }
     }
 }
