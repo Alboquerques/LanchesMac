@@ -37,7 +37,7 @@ namespace LanchesMac.Controllers
             if (lancheSelecionado != null)
                 _carrinhoCompra.AdicionarAoCarrinho(lancheSelecionado);
 
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
         public IActionResult RemoverItemDoCarrinho(int lancheId)
@@ -47,7 +47,7 @@ namespace LanchesMac.Controllers
             if (lancheSelecionado != null)
                 _carrinhoCompra.RemoverDoCarrinho(lancheSelecionado);
 
-            return View("Index");
+            return RedirectToAction("Index");
         }
     }
 }
