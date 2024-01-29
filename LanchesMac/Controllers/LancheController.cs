@@ -29,20 +29,10 @@ namespace LanchesMac.Controllers
             }
             else
             {
-                try
-                {
-                    lanches = categoria switch
-                    {
-                        "Normal" => _lancheRepository.Lanches.Where(l => l.Categoria.CategoriaNome.Equals("Normal")),
-                        "Natural" => _lancheRepository.Lanches.Where(l => l.Categoria.CategoriaNome.Equals("Natural")),
-                        _ => throw new ArgumentOutOfRangeException(nameof(categoriaAtual), "Valor de categoria é inválido, digite uma categoria válida."),
-                    };
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Falha na escolha da categoria", ex.Message);
-                    return null;
-                }
+                lanches = _lancheRepository.Lanches
+                                 .Where(l => l.Categoria.CategoriaNome.Equals(categoria))
+                                 .OrderBy(c => c.Nome);
+
                 categoriaAtual = categoria;
             }
 
@@ -53,6 +43,12 @@ namespace LanchesMac.Controllers
             };
 
             return View(lancheListViewModel);
+        }
+
+        public IActionResult Details(int lancheId)
+        {
+            var lanche = _lancheRepository.Lanches.FirstOrDefault(l => l.LancheId == lancheId);
+            return View(lanche);
         }
     }
 }
