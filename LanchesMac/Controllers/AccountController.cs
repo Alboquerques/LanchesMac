@@ -73,8 +73,8 @@ namespace LanchesMac.Controllers
 
                 if (result.Succeeded)
                 {
-                    //await _signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Login", "Account");
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    //return RedirectToAction("Login", "Account");
                 }
                 else
                 {
