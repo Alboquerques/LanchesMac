@@ -16,7 +16,7 @@ namespace LanchesMac.Controllers
 
         public IActionResult Index()
         {
-            var homeViewModel = new HomeViewModel()
+            var homeViewModel = new HomeViewModel
             {
                 LanchesPreferidos = _lancheRepository.LanchesPreferidos
             };
@@ -24,10 +24,15 @@ namespace LanchesMac.Controllers
             return View(homeViewModel);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None,
+            NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorViewModel
+            {
+                RequestId = Activity.Current?.Id
+                ?? HttpContext.TraceIdentifier
+            });
         }
     }
 }

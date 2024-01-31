@@ -17,7 +17,7 @@ namespace LanchesMac.Models.Repositories
         public void criarPedido(Pedido pedido)
         {
             pedido.PedidoEnviado = DateTime.Now;
-            _context.Pedido.Add(pedido);
+            _context.Pedidos.Add(pedido);
             _context.SaveChanges();
 
             var carrinhoCompraItens = _carrinhoCompra.CarrinhoCompraItens;
@@ -31,7 +31,7 @@ namespace LanchesMac.Models.Repositories
                     PedidoId = pedido.PedidoId,
                     Preco = carrinhoItem.Lanche.Preco
                 };
-                _context.PedidoDetalhe.Add(pedidoDetail);
+                _context.PedidoDetalhes.Add(pedidoDetail);
             }
             _context.SaveChanges();
         }
