@@ -73,8 +73,9 @@ namespace LanchesMac.Controllers
 
                 if (result.Succeeded)
                 {
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    //return RedirectToAction("Login", "Account");
+                    //await _signInManager.SignInAsync(user, isPersistent: false);
+                    await _userManager.AddToRoleAsync(user, "Member");
+                    return RedirectToAction("Login", "Account");
                 }
                 else
                 {
@@ -92,6 +93,11 @@ namespace LanchesMac.Controllers
             HttpContext.User = null;
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+        
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }
