@@ -21,7 +21,7 @@ namespace LanchesMac.Controllers
         {
             var itens = _carrinhoCompra.GetCarrinhoCompraItens();
 
-            _carrinhoCompra.CarrinhoCompraItens = itens;
+            _carrinhoCompra.CarrinhoCompraItems = itens;
 
             var carrinhoDeCompraVM = new CarrinhoCompraViewModel()
             {
@@ -31,6 +31,7 @@ namespace LanchesMac.Controllers
 
             return View(carrinhoDeCompraVM);
         }
+
         [Authorize]
         public IActionResult AdicionarItemNoCarrinhoCompra(int lancheId)
         {
@@ -48,7 +49,9 @@ namespace LanchesMac.Controllers
             var lancheSelecionado = _lancheRepository.Lanches.FirstOrDefault(p => p.LancheId == lancheId);
 
             if (lancheSelecionado != null)
+            {
                 _carrinhoCompra.RemoverDoCarrinho(lancheSelecionado);
+            }
 
             return RedirectToAction("Index");
         }

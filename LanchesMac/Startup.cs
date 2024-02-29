@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using LanchesMac.Services;
+using ReflectionIT.Mvc.Paging;
+using LanchesMac.Repositories;
 
 namespace LanchesMac;
 public class Startup
@@ -33,6 +35,12 @@ public class Startup
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
         services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
+
+        services.AddPaging(options =>
+        {
+            options.ViewName = "Bootstrap4";
+            options.PageParameterName = "pageindex";
+        });
 
         services.AddAuthorization(options =>
         {

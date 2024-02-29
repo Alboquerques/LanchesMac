@@ -2,6 +2,6 @@
 {
     public interface IPedidoRepository
     {
-        void criarPedido(Pedido pedido);
+        void CriarPedido(Pedido pedido);
     }
 }
