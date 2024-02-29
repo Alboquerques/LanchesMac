@@ -34,7 +34,11 @@ namespace LanchesMac.Models
         public decimal Preco { get; set; }
 
         [Display(Name = "Caminho da imagem normal")]
+<<<<<<< HEAD
         [MinLength(70, ErrorMessage = "O {0} deve ter no mínimo {1} caracteres")]
+=======
+        [MinLength(50, ErrorMessage = "O {0} deve ter no mínimo {1} caracteres")]
+>>>>>>> 76912de00ed419b2a41105ca9cb3a06efe123d0a
         public string ImagemUrl { get; set; }
 
         [Display(Name = "Caminho da imagem miniatura")]

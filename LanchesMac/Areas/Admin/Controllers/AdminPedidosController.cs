@@ -1,14 +1,31 @@
+<<<<<<< HEAD
 ﻿using LanchesMac.Context;
 using LanchesMac.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ReflectionIT.Mvc.Paging;
+=======
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using LanchesMac.Context;
+using LanchesMac.Models;
+using Microsoft.AspNetCore.Authorization;
+>>>>>>> 76912de00ed419b2a41105ca9cb3a06efe123d0a
 
 namespace LanchesMac.Areas.Admin.Controllers
 {
     [Area("Admin")]
+<<<<<<< HEAD
     [Authorize(Roles = "Admin")]
+=======
+    [Authorize("Admin")]
+>>>>>>> 76912de00ed419b2a41105ca9cb3a06efe123d0a
     public class AdminPedidosController : Controller
     {
         private readonly AppDbContext _context;
@@ -19,6 +36,7 @@ namespace LanchesMac.Areas.Admin.Controllers
         }
 
         // GET: Admin/AdminPedidos
+<<<<<<< HEAD
         //public async Task<IActionResult> Index()
         //{
         //    return View(await _context.Pedidos.ToListAsync());
@@ -44,13 +62,27 @@ namespace LanchesMac.Areas.Admin.Controllers
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
+=======
+        public async Task<IActionResult> Index()
+        {
+              return View(await _context.Pedidos.ToListAsync());
+        }
+
+        // GET: Admin/AdminPedidos/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null || _context.Pedidos == null)
+>>>>>>> 76912de00ed419b2a41105ca9cb3a06efe123d0a
             {
                 return NotFound();
             }
 
             var pedido = await _context.Pedidos
                 .FirstOrDefaultAsync(m => m.PedidoId == id);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 76912de00ed419b2a41105ca9cb3a06efe123d0a
             if (pedido == null)
             {
                 return NotFound();
@@ -66,6 +98,11 @@ namespace LanchesMac.Areas.Admin.Controllers
         }
 
         // POST: Admin/AdminPedidos/Create
+<<<<<<< HEAD
+=======
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+>>>>>>> 76912de00ed419b2a41105ca9cb3a06efe123d0a
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("PedidoId,Nome,Sobrenome,Endereco1,Endereco2,Cep,Estado,Cidade,Telefone,Email,PedidoEnviado,PedidoEntregueEm")] Pedido pedido)
@@ -82,7 +119,11 @@ namespace LanchesMac.Areas.Admin.Controllers
         // GET: Admin/AdminPedidos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+<<<<<<< HEAD
             if (id == null)
+=======
+            if (id == null || _context.Pedidos == null)
+>>>>>>> 76912de00ed419b2a41105ca9cb3a06efe123d0a
             {
                 return NotFound();
             }
@@ -133,7 +174,11 @@ namespace LanchesMac.Areas.Admin.Controllers
         // GET: Admin/AdminPedidos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+<<<<<<< HEAD
             if (id == null)
+=======
+            if (id == null || _context.Pedidos == null)
+>>>>>>> 76912de00ed419b2a41105ca9cb3a06efe123d0a
             {
                 return NotFound();
             }
@@ -153,15 +198,32 @@ namespace LanchesMac.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+<<<<<<< HEAD
             var pedido = await _context.Pedidos.FindAsync(id);
             _context.Pedidos.Remove(pedido);
+=======
+            if (_context.Pedidos == null)
+            {
+                return Problem("Entity set 'AppDbContext.Pedidos'  is null.");
+            }
+            var pedido = await _context.Pedidos.FindAsync(id);
+            if (pedido != null)
+            {
+                _context.Pedidos.Remove(pedido);
+            }
+            
+>>>>>>> 76912de00ed419b2a41105ca9cb3a06efe123d0a
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool PedidoExists(int id)
         {
+<<<<<<< HEAD
             return _context.Pedidos.Any(e => e.PedidoId == id);
+=======
+          return _context.Pedidos.Any(e => e.PedidoId == id);
+>>>>>>> 76912de00ed419b2a41105ca9cb3a06efe123d0a
         }
     }
 }
